@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indicadores do Banco Central</title>
+  <link rel="stylesheet" href="painel/estilo.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Indicadores do Banco Central</h1>
+      <p class="subtitulo">Dólar, Selic e IPCA atualizados todo dia útil, direto da API do BC</p>
+    </div>
+    <div class="periodos" id="periodos">
+      <button data-meses="1">1M</button>
+      <button data-meses="6">6M</button>
+      <button data-meses="12" class="ativo">1A</button>
+      <button data-meses="60">5A</button>
+      <button data-meses="0">Tudo</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="aviso" class="aviso">Carregando dados...</p>
+
+    <section class="cards">
+      <article class="card" id="card-dolar">
+        <span class="rotulo">Dólar comercial</span>
+        <strong class="valor">--</strong>
+        <span class="detalhe">--</span>
+      </article>
+      <article class="card" id="card-selic">
+        <span class="rotulo">Meta Selic</span>
+        <strong class="valor">--</strong>
+        <span class="detalhe">--</span>
+      </article>
+      <article class="card" id="card-ipca">
+        <span class="rotulo">IPCA do mês</span>
+        <strong class="valor">--</strong>
+        <span class="detalhe">--</span>
+      </article>
+    </section>
+
+    <section class="grafico">
+      <h2>Dólar comercial <small>R$, venda</small></h2>
+      <div class="area"><canvas id="grafico-dolar"></canvas></div>
+    </section>
+
+    <section class="grafico">
+      <h2>Meta Selic <small>% ao ano</small></h2>
+      <div class="area"><canvas id="grafico-selic"></canvas></div>
+    </section>
+
+    <section class="grafico">
+      <h2>IPCA <small>% no mês</small></h2>
+      <div class="area"><canvas id="grafico-ipca"></canvas></div>
+    </section>
+  </main>
+
+  <footer>
+    Fonte: <a href="https://dadosabertos.bcb.gov.br/">Banco Central do Brasil</a> (SGS) ·
+    última atualização: <span id="atualizado">--</span> ·
+    <a href="https://github.com/victormorais07/indicadores-bcb">código no GitHub</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="painel/painel.js"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@ Um pipeline pequeno que **coleta todo dia** o dólar, a Selic e o IPCA da API p�
 
 Fiz pra praticar o básico de engenharia de dados (extrair, tratar, carregar e agendar) num projeto que dá pra ver funcionando.
 
+**📊 Painel interativo: [victormorais07.github.io/indicadores-bcb](https://victormorais07.github.io/indicadores-bcb/)**
+
 ## Últimos valores
 
 <!-- inicio-indicadores -->
@@ -33,6 +35,15 @@ API do BC (SGS)  ──►  extrair  ──►  limpar  ──►  juntar com o 
 
 O CSV é gravado num arquivo temporário e depois renomeado, pra nunca ficar pela metade se o processo cair no meio.
 
+### Painel
+
+O painel é só HTML, CSS e JavaScript ([`index.html`](index.html) e [`painel/`](painel/)), publicado pelo GitHub Pages. Ele lê os mesmos CSV da pasta `dados/`, então quando o Actions faz o commit dos dados novos o painel já mostra atualizado, sem servidor nenhum.
+
+- gráficos com [Chart.js](https://www.chartjs.org/), passando o mouse aparece o valor do dia
+- filtro de período (1 mês, 6 meses, 1 ano, 5 anos ou tudo)
+- variação do dólar no período, desde quando a Selic está no valor atual e IPCA acumulado em 12 meses
+- tema claro ou escuro, conforme o sistema
+
 ## Séries usadas
 
 | Arquivo | Série | Código SGS | Frequência |
@@ -58,6 +69,14 @@ Testes:
 python -m pytest
 ```
 
+Pra ver o painel localmente (abrir o `index.html` direto não funciona, o navegador bloqueia a leitura dos CSV):
+
+```bash
+python -m http.server
+```
+
+e abrir http://localhost:8000.
+
 ## Estrutura
 
 ```
@@ -70,6 +89,10 @@ python -m pytest
 │   ├── grafico.py        # gera imagens/indicadores.png
 │   └── readme.py         # atualiza a tabela deste README
 ├── dados/                # histórico em CSV (atualizado pelo Actions)
+├── index.html            # painel (GitHub Pages)
+├── painel/
+│   ├── estilo.css
+│   └── painel.js         # lê os CSV e monta os gráficos
 ├── imagens/
 ├── tests/
 └── .github/workflows/coletar.yml
@@ -77,6 +100,6 @@ python -m pytest
 
 ## Tecnologias
 
-Python, pandas, matplotlib, requests, pytest e GitHub Actions.
+Python, pandas, matplotlib, requests, pytest, GitHub Actions, GitHub Pages, JavaScript e Chart.js.
 
 Os dados são públicos e vêm do [Banco Central do Brasil](https://dadosabertos.bcb.gov.br/).

@@ -24,5 +24,6 @@ def salvar(nome, df):
 
     # grava num temporário e depois troca, pra não deixar o csv pela metade se der erro
     temporario = arquivo.with_suffix(".tmp")
-    df.to_csv(temporario, index=False, date_format="%Y-%m-%d")
+    # \n fixo pra o arquivo sair igual no Windows e no Linux do GitHub Actions
+    df.to_csv(temporario, index=False, date_format="%Y-%m-%d", lineterminator="\n")
     temporario.replace(arquivo)

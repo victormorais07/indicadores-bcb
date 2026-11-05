@@ -1,0 +1,186 @@
+:root {
+  --fundo: #f4f6f8;
+  --cartao: #ffffff;
+  --texto: #1f2933;
+  --suave: #6b7785;
+  --borda: #e1e5ea;
+  --verde: #2e7d32;
+  --vermelho: #c62828;
+  --azul: #1565c0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #14181d;
+    --cartao: #1d232a;
+    --texto: #e6e9ed;
+    --suave: #94a0ad;
+    --borda: #2c343d;
+    --verde: #5fbf63;
+    --vermelho: #ef6b6b;
+    --azul: #5a9be6;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+header,
+main,
+footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding-top: 32px;
+  padding-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.subtitulo {
+  margin: 4px 0 0;
+  color: var(--suave);
+}
+
+.periodos {
+  display: flex;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.periodos button {
+  border: none;
+  background: none;
+  color: var(--suave);
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.periodos button:hover {
+  color: var(--texto);
+}
+
+.periodos button.ativo {
+  background: var(--azul);
+  color: #fff;
+}
+
+.aviso {
+  color: var(--suave);
+}
+
+.aviso:empty {
+  display: none;
+}
+
+.aviso.erro {
+  color: var(--vermelho);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.card,
+.grafico {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+}
+
+.card {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card .rotulo {
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+
+.card .valor {
+  font-size: 1.7rem;
+}
+
+.card .detalhe {
+  font-size: 0.85rem;
+  color: var(--suave);
+}
+
+.sobe {
+  color: var(--vermelho);
+}
+
+.desce {
+  color: var(--verde);
+}
+
+.grafico {
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.grafico h2 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.grafico h2 small {
+  color: var(--suave);
+  font-weight: normal;
+  margin-left: 4px;
+}
+
+.area {
+  position: relative;
+  height: 260px;
+}
+
+footer {
+  padding-top: 8px;
+  padding-bottom: 32px;
+  color: var(--suave);
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--azul);
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .area {
+    height: 200px;
+  }
+}

@@ -12,7 +12,7 @@ Fiz pra praticar o básico de engenharia de dados (extrair, tratar, carregar e a
 | Indicador | Último valor | Data |
 |---|---|---|
 | Dólar comercial (venda) | R$ 5,4621 | 05/11/2026 |
-| Meta Selic | 13,75 % a.a. | 05/11/2026 |
+| Meta Selic | 13,75 % a.a. | 06/11/2026 |
 | IPCA mensal | 0,82 % no mês | 09/2026 |
 <!-- fim-indicadores -->
 
